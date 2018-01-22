@@ -21,7 +21,7 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\SVSCapture\Timer.h">
+    <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="ConsoleClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\SVSCapture\Timer.cpp">
+    <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
