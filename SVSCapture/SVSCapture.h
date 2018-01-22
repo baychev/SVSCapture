@@ -165,16 +165,16 @@ private:
 #ifdef __cplusplus
 extern "C" {
 #endif
-	SVSCapture* SVSCapture_new(int lib_type) { return new SVSCapture((LibraryType)lib_type); } // add SVSCAPTURE_API 
-	int  SVSCapture_reg_camera(SVSCapture* sv_cap, char* sn) { return sv_cap->register_camera(sn); }
-	void SVSCapture_set_shooting_mode(SVSCapture* sv_cap, int cam_idx, int mode) { sv_cap->set_shooting_mode(cam_idx, (ShootingMode)mode); }
-	void SVSCapture_set_feature_int(SVSCapture* sv_cap, int cam_idx, const char* name, int value) { sv_cap->set_feature_int(cam_idx, name, value); }
-	void SVSCapture_set_feature_float(SVSCapture* sv_cap, int cam_idx, const char* name, double value) { sv_cap->set_feature_int(cam_idx, name, value); }
-	void SVSCapture_start_acq(SVSCapture* sv_cap, int cam_idx) { sv_cap->start_acquisition(cam_idx); }
-	int  SVSCapture_get_image(SVSCapture* sv_cap, int cam_idx, unsigned char * im_buffer) { return sv_cap->get_image(cam_idx, im_buffer); }
-	void SVSCapture_stop_acq(SVSCapture* sv_cap, int cam_idx) { sv_cap->stop_acquisition(cam_idx); }
-	void SVSCapture_close(SVSCapture* sv_cap) { sv_cap->close(); }
-	void SVSCapture_save_image(SVSCapture* sv_cap, int width, int height, unsigned char * im_buffer) { sv_cap->save_image(width, height, im_buffer); }
+	SVSCAPTURE_API SVSCapture* SVSCapture_new(int lib_type) { return new SVSCapture((LibraryType)lib_type); }
+	int  SVSCAPTURE_API SVSCapture_reg_camera(SVSCapture* sv_cap, char* sn) { return sv_cap->register_camera(sn); }
+	void SVSCAPTURE_API SVSCapture_set_shooting_mode(SVSCapture* sv_cap, int cam_idx, int mode) { sv_cap->set_shooting_mode(cam_idx, (ShootingMode)mode); }
+	void SVSCAPTURE_API SVSCapture_set_feature_int(SVSCapture* sv_cap, int cam_idx, const char* name, int value) { sv_cap->set_feature_int(cam_idx, name, value); }
+	void SVSCAPTURE_API SVSCapture_set_feature_float(SVSCapture* sv_cap, int cam_idx, const char* name, double value) { sv_cap->set_feature_int(cam_idx, name, value); }
+	void SVSCAPTURE_API SVSCapture_start_acq(SVSCapture* sv_cap, int cam_idx) { sv_cap->start_acquisition(cam_idx); }
+	int  SVSCAPTURE_API SVSCapture_get_image(SVSCapture* sv_cap, int cam_idx, unsigned char * im_buffer) { return sv_cap->get_image(cam_idx, im_buffer); }
+	void SVSCAPTURE_API SVSCapture_stop_acq(SVSCapture* sv_cap, int cam_idx) { sv_cap->stop_acquisition(cam_idx); }
+	void SVSCAPTURE_API SVSCapture_close(SVSCapture* sv_cap) { sv_cap->close(); }
+	void SVSCAPTURE_API SVSCapture_save_image(SVSCapture* sv_cap, int width, int height, unsigned char * im_buffer) { sv_cap->save_image(width, height, im_buffer); }
 #ifdef __cplusplus
 }
 #endif
