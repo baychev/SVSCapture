@@ -107,6 +107,7 @@ public:
 	Args:
 	cam_idx: camera index (in sv_cam_list)
 	im_buffer: image bufffer to store the result
+	NOTE: this should create an OpenCV Mat3b
 	*/
 	int get_image(int cam_idx, unsigned char * im_buffer);
 	/*
@@ -124,7 +125,7 @@ public:
 	Save image to file system.
 	Note: default location is C\images
 	*/
-	int save_image(int width, int height, unsigned char *im_buffer);
+	int save_image(const char * file_name, int width, int height, unsigned char *im_buffer);
 
 	/*
 	Print camera settings.
@@ -174,7 +175,7 @@ extern "C" {
 	int  SVSCAPTURE_API SVSCapture_get_image(SVSCapture* sv_cap, int cam_idx, unsigned char * im_buffer) { return sv_cap->get_image(cam_idx, im_buffer); }
 	void SVSCAPTURE_API SVSCapture_stop_acq(SVSCapture* sv_cap, int cam_idx) { sv_cap->stop_acquisition(cam_idx); }
 	void SVSCAPTURE_API SVSCapture_close(SVSCapture* sv_cap) { sv_cap->close(); }
-	void SVSCAPTURE_API SVSCapture_save_image(SVSCapture* sv_cap, int width, int height, unsigned char * im_buffer) { sv_cap->save_image(width, height, im_buffer); }
+	void SVSCAPTURE_API SVSCapture_save_image(SVSCapture* sv_cap, const char* file_name, int width, int height, unsigned char * im_buffer) { sv_cap->save_image(file_name, width, height, im_buffer); }
 #ifdef __cplusplus
 }
 #endif
