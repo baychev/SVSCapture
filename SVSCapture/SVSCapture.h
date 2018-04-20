@@ -20,8 +20,8 @@ namespace svs
 	*/
 	enum SVSCAPTURE_API LibraryType
 	{
-		USB3 = 0,
-		GIG_E = 1,
+		USB3 = 1,
+		GIG_E = 0,
 		CAMERA_LINK = 2
 	};
 
@@ -46,6 +46,7 @@ namespace svs
 		ERR_SVS_GENICAM_CACHE = -4,
 		ERR_SVLIB_INIT = -5,
 		ERR_DEVINFOLIST_EMPTY = -6,
+		ERR_SVS_SYS_INIT = -7,
 		ERR_SN_MISMATCH = -11,
 		ERR_CAM_ALREADY_REGISTERED = -12,
 		ERR_NO_IMAGE = -21,
@@ -73,13 +74,6 @@ namespace svs
 		sn: serial number
 		*/
 		int RegisterCamera(const char * sn);
-		/*
-		NOTE: only software trigger is implemented.
-		Args:
-		cam_idx: camera index (in sv_cam_list)
-		mode: shooting mode
-		*/
-		void SetShootingMode(int cam_idx, ShootingMode mode);
 		/*
 		Set camera int feature value.
 		Note: must be devisible by 8.
@@ -121,13 +115,6 @@ namespace svs
 		Close the library.
 		*/
 		void Close();
-
-		/*
-		Save image to file system.
-		Note: default location is C\images
-		*/
-		int SaveImage(const char * file_name, int width, int height, unsigned char *im_buffer);
-
 		/*
 		Print camera settings.
 		Args:
@@ -152,34 +139,29 @@ NOTE: deviate from general function naming convention in order to improve readab
 #ifdef __cplusplus
 extern "C" {
 #endif
-	namespace C
-	{
-		/*
-		Initialize the SDK library with a given camera interface type.
-		*/
-		SVSCAPTURE_API svs::SVSCapture* SVSCapture_new(int lib_type);
-		/*
-		Close the library, free up resources.
-		*/
-		void SVSCAPTURE_API SVSCapture_close(svs::SVSCapture* sv_cap);
-		/*
-		Get an image from a camera.
-		*/
-		int  SVSCAPTURE_API SVSCapture_get_image(svs::SVSCapture* sv_cap, int cam_idx, unsigned char * im_buffer);
-		/*
-		Register camera for future interaction.
-		*/
-		int  SVSCAPTURE_API SVSCapture_reg_camera(svs::SVSCapture* sv_cap, const char* sn);
-		/*
-		Save image to the file system. Use default compression in OpenCV.
-		*/
-		void SVSCAPTURE_API SVSCapture_save_image(svs::SVSCapture* sv_cap, const char* file_name, int width, int height, unsigned char * im_buffer);
-		void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, int cam_idx, const char* name, double value);
-		void SVSCAPTURE_API SVSCapture_set_feature_int(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
-		void SVSCAPTURE_API SVSCapture_set_shooting_mode(svs::SVSCapture* sv_cap, int cam_idx, int mode);
-		void SVSCAPTURE_API SVSCapture_start_acq(svs::SVSCapture* sv_cap, int cam_idx);
-		void SVSCAPTURE_API SVSCapture_stop_acq(svs::SVSCapture* sv_cap, int cam_idx);
-	}
+	/*
+	Initialize the SDK library with a given camera interface type.
+	*/
+	SVSCAPTURE_API svs::SVSCapture* SVSCapture_new(int lib_type);
+	/*
+	Close the library, free up resources.
+	*/
+	void SVSCAPTURE_API SVSCapture_close(svs::SVSCapture* sv_cap);
+	/*
+	Get an image from a camera.
+	*/
+	int  SVSCAPTURE_API SVSCapture_get_image(svs::SVSCapture* sv_cap, int cam_idx, unsigned char * im_buffer);
+	/*
+	Register camera for future interaction.
+	*/
+	int  SVSCAPTURE_API SVSCapture_reg_camera(svs::SVSCapture* sv_cap, const char* sn);
+	/*
+	Save image to the file system. Use default compression in OpenCV.
+	*/
+	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, int cam_idx, const char* name, double value);
+	void SVSCAPTURE_API SVSCapture_set_feature_int(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
+	void SVSCAPTURE_API SVSCapture_start_acq(svs::SVSCapture* sv_cap, int cam_idx);
+	void SVSCAPTURE_API SVSCapture_stop_acq(svs::SVSCapture* sv_cap, int cam_idx);
 #ifdef __cplusplus
 }
 #endif
