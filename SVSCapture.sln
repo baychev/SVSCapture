@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SVSCapture", "SVSCapture\SVSCapture.vcxproj", "{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleClient", "ConsoleClient\ConsoleClient.vcxproj", "{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PythonClient", "PythonClient", "{E9FB39EB-EF2F-415C-B79D-9EE62FD654C8}"
+	ProjectSection(SolutionItems) = preProject
+		PythonClient.py = PythonClient.py
+		SVSCapture.py = SVSCapture.py
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
