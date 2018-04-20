@@ -15,7 +15,7 @@ print("Register camera(s).")
 #   image_height=1080, 
 #   image_width=1920, 
 #   exposure_time=2000
-cam = Camera(serial_number="59992", image_height=600, image_width=600, exposure_time=20000)
+cam = Camera(serial_number="your_serial_number", image_height=600, image_width=600, exposure_time=20000)
 result = sv_cap.register_camera(cam)
 print('-> result', cam.serial_number, result)
 
