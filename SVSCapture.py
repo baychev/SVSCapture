@@ -14,14 +14,17 @@ else:
     msg = 'DLL not present at relative file path: ' + path
     raise Exception(msg)
 
+enable_timing = False
+
 def timethis(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        start = time.time()
-        result = func(*args, **kwargs)
-        end = time.time()
-        print(func.__name__, end-start)
-        return result
+			start = time.time()
+			result = func(*args, **kwargs)
+			end = time.time()
+			if enable_timing:
+				print('method {0} : {1} seconds.'.format(func.__name__, round(end - start, 3)))
+			return result
     return wrapper
 
 # NOTE: enum.Enum is inconsistent
@@ -58,11 +61,15 @@ class Camera(object):
     image_channels = 3
 
     def __init__(self, serial_number, shooting_mode=ShootingMode.SOFTWARE_TRIGGER, image_height=1080, image_width=1920, exposure_time=2000):
-        self.serial_number = serial_number
-        self.image_height = image_height
-        self.image_width = image_width
-        self.shooting_mode = shooting_mode
-        self.exposure_time = exposure_time
+		self.serial_number = serial_number
+		
+		# Safeguard for serial_number placeholder. Delete if yours is not numeric.
+		int(self.serial_number)
+		
+		self.image_height = image_height
+		self.image_width = image_width
+		self.shooting_mode = shooting_mode
+		self.exposure_time = exposure_time
 
 class SVSCapture(object):
     def __init__(self, libType):
