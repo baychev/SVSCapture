@@ -17,7 +17,7 @@ print("Register camera(s).")
 #   exposure_time=2000
 cam = Camera(serial_number="your_serial_number", image_height=600, image_width=600, exposure_time=20000)
 result = sv_cap.register_camera(cam)
-print('-> result', cam.serial_number, result)
+print('---> sn {0} result: {1}'.format(cam.serial_number, result))
 
 if cam.index >= 0:
     # This is a time expensive operation.
