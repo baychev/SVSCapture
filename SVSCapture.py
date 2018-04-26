@@ -76,6 +76,9 @@ class SVSCapture(object):
         lib.SVSCapture_new.argtypes = [ctypes.c_int]
         lib.SVSCapture_new.restype = ctypes.c_void_p
 
+        lib.SVSCapture_set_feature_enum.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_int]
+        lib.SVSCapture_set_feature_enum.restype = ctypes.c_void_p
+
         lib.SVSCapture_set_feature_int.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_int]
         lib.SVSCapture_set_feature_int.restype = ctypes.c_void_p
 
@@ -96,7 +99,7 @@ class SVSCapture(object):
         # set up shooting properties
         # NOTE: Only software trigger has been tested.
         #       Coninuous mode shall provide access to the whole image buffer.
-        lib.SVSCapture_set_feature_int(self.obj, cam.index, "TriggerMode".encode('ascii'), cam.shooting_mode)
+        lib.SVSCapture_set_feature_enum(self.obj, cam.index, "TriggerMode".encode('ascii'), cam.shooting_mode)
         lib.SVSCapture_set_feature_int(self.obj, cam.index, "Height".encode('ascii'), cam.image_height)
         lib.SVSCapture_set_feature_int(self.obj, cam.index, "Width".encode('ascii'), cam.image_width)
         lib.SVSCapture_set_feature_float(self.obj, cam.index, "ExposureTime".encode('ascii'), cam.exposure_time)
@@ -135,11 +138,12 @@ class SVSCapture(object):
         time_start = time.time() * 1000
         while time.time() * 1000 < time_start + timeout_ms:
             res = lib.SVSCapture_get_image(self.obj, cam.index, image.data)
-            retries +=1
             if res == 0:
                 if retries > 0:
                     print('Got an image with {} retries'.format(retries))
                 break
+            
+            retries +=1
         if res != 0:
             print('Could not obtain an image from {} retries.'.format(retries))
   

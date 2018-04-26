@@ -74,6 +74,7 @@ namespace svs
 		sn: serial number
 		*/
 		int RegisterCamera(const char * sn);
+		void SetFeatureEnum(int cam_idx, const char * name, int value);
 		/*
 		Set camera int feature value.
 		Note: must be devisible by 8.
@@ -124,7 +125,7 @@ namespace svs
 
 	private:
 		SVCamSystem * sv_cam_sys = NULL;
-		const UINT32 kTimeOut = 40;
+		const UINT32 kTimeOut = 100;
 		const int kChannels = 3;
 		/*
 		Initialize library, find attached devices.
@@ -160,6 +161,7 @@ extern "C" {
 	*/
 	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, int cam_idx, const char* name, double value);
 	void SVSCAPTURE_API SVSCapture_set_feature_int(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
+	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
 	void SVSCAPTURE_API SVSCapture_start_acq(svs::SVSCapture* sv_cap, int cam_idx);
 	void SVSCAPTURE_API SVSCapture_stop_acq(svs::SVSCapture* sv_cap, int cam_idx);
 #ifdef __cplusplus

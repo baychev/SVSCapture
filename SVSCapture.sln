@@ -7,36 +7,58 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SVSCapture", "SVSCapture\SV
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleClient", "ConsoleClient\ConsoleClient.vcxproj", "{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PythonClient", "PythonClient", "{E9FB39EB-EF2F-415C-B79D-9EE62FD654C8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PythonWrapperDemo", "PythonWrapperDemo", "{02D0C21F-91AE-41D4-8AE2-BE916598B34B}"
 	ProjectSection(SolutionItems) = preProject
 		PythonClient.py = PythonClient.py
 		SVSCapture.py = SVSCapture.py
 	EndProjectSection
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonWrapper", "PythonWrapper\PythonWrapper.pyproj", "{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SVSPythonAPI", "SVSCapturePython\SVSPythonAPI.pyproj", "{0B510862-A7BA-407C-8F9D-C03D6788A0EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Debug|x64.ActiveCfg = Debug|x64
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Debug|x64.Build.0 = Debug|x64
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Debug|x86.ActiveCfg = Debug|Win32
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Debug|x86.Build.0 = Debug|Win32
+		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Release|Any CPU.ActiveCfg = Release|Win32
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Release|x64.ActiveCfg = Release|x64
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Release|x64.Build.0 = Release|x64
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Release|x86.ActiveCfg = Release|Win32
 		{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}.Release|x86.Build.0 = Release|Win32
+		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Debug|x64.ActiveCfg = Debug|x64
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Debug|x64.Build.0 = Debug|x64
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Debug|x86.ActiveCfg = Debug|Win32
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Debug|x86.Build.0 = Debug|Win32
+		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Release|Any CPU.ActiveCfg = Release|Win32
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Release|x64.ActiveCfg = Release|x64
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Release|x64.Build.0 = Release|x64
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Release|x86.ActiveCfg = Release|Win32
 		{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}.Release|x86.Build.0 = Release|Win32
+		{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}.Release|x64.ActiveCfg = Release|Any CPU
+		{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}.Release|x86.ActiveCfg = Release|Any CPU
+		{0B510862-A7BA-407C-8F9D-C03D6788A0EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B510862-A7BA-407C-8F9D-C03D6788A0EF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0B510862-A7BA-407C-8F9D-C03D6788A0EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0B510862-A7BA-407C-8F9D-C03D6788A0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B510862-A7BA-407C-8F9D-C03D6788A0EF}.Release|x64.ActiveCfg = Release|Any CPU
+		{0B510862-A7BA-407C-8F9D-C03D6788A0EF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
