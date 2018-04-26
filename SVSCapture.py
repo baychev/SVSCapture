@@ -3,8 +3,8 @@ from functools import wraps
 import ctypes
 import cv2
 import numpy as np
-import time
 import os.path
+import time
 
 path = "x64\\Release\\SVSCapture.dll"
 
@@ -19,12 +19,12 @@ enable_timing = False
 def timethis(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-			start = time.time()
-			result = func(*args, **kwargs)
-			end = time.time()
-			if enable_timing:
-				print('method {0} : {1} seconds.'.format(func.__name__, round(end - start, 3)))
-			return result
+            start = time.time()
+            result = func(*args, **kwargs)
+            end = time.time()
+            if enable_timing:
+                print('method {0} : {1} seconds.'.format(func.__name__, round(end - start, 3)))
+            return result
     return wrapper
 
 # NOTE: enum.Enum is inconsistent
@@ -61,15 +61,15 @@ class Camera(object):
     image_channels = 3
 
     def __init__(self, serial_number, shooting_mode=ShootingMode.SOFTWARE_TRIGGER, image_height=1080, image_width=1920, exposure_time=2000):
-		self.serial_number = serial_number
-		
-		# Safeguard for serial_number placeholder. Delete if yours is not numeric.
-		int(self.serial_number)
-		
-		self.image_height = image_height
-		self.image_width = image_width
-		self.shooting_mode = shooting_mode
-		self.exposure_time = exposure_time
+        self.serial_number = serial_number
+        
+        # Safeguard for serial_number placeholder. Delete if yours is not numeric.
+        int(self.serial_number)
+        
+        self.image_height = image_height
+        self.image_width = image_width
+        self.shooting_mode = shooting_mode
+        self.exposure_time = exposure_time
 
 class SVSCapture(object):
     def __init__(self, libType):
@@ -90,15 +90,16 @@ class SVSCapture(object):
         # NOTE: Camera index is not a good reference, serial number shall be used for robustness.
         lib.SVSCapture_reg_camera.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
         lib.SVSCapture_reg_camera.restype = ctypes.c_int16
-        cam.index = lib.SVSCapture_reg_camera(self.obj, cam.serial_number)
+
+        cam.index = lib.SVSCapture_reg_camera(self.obj, cam.serial_number.encode('ascii'))
 
         # set up shooting properties
         # NOTE: Only software trigger has been tested.
         #       Coninuous mode shall provide access to the whole image buffer.
-        lib.SVSCapture_set_feature_int(self.obj, cam.index, "TriggerMode", cam.shooting_mode)
-        lib.SVSCapture_set_feature_int(self.obj, cam.index, "Height", cam.image_height)
-        lib.SVSCapture_set_feature_int(self.obj, cam.index, "Width", cam.image_width)
-        lib.SVSCapture_set_feature_float(self.obj, cam.index, "ExposureTime", cam.exposure_time)
+        lib.SVSCapture_set_feature_int(self.obj, cam.index, "TriggerMode".encode('ascii'), cam.shooting_mode)
+        lib.SVSCapture_set_feature_int(self.obj, cam.index, "Height".encode('ascii'), cam.image_height)
+        lib.SVSCapture_set_feature_int(self.obj, cam.index, "Width".encode('ascii'), cam.image_width)
+        lib.SVSCapture_set_feature_float(self.obj, cam.index, "ExposureTime".encode('ascii'), cam.exposure_time)
 
         return cam.index >= 0
 
