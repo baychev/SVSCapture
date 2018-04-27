@@ -23,7 +23,7 @@ with SVSCapture() as sv_cap:
     # Take images and save
     for i in range(0, 1):
         image = sv_cap.get_image(cam)
-        image.save() # save using OpenCV
+        #image.save() # save with OpenCV code, install it.
 
     # Test frame availability with a high number of frame grabs.
     print("performing availability test...")

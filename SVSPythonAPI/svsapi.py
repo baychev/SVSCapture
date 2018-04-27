@@ -24,7 +24,6 @@ class Image(object):
         save_image(self, file_path=file_path)
 
 class Camera(object):
-    index = -1
     name = None
     serial_number = None
     image_channels = 1
