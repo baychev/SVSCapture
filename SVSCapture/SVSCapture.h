@@ -52,7 +52,8 @@ namespace svs
 		ERR_NO_IMAGE = -21,
 		ERR_IMAGE_FILE_EXISTS = -31,
 		ERR_BMP_NOIMAGE = -41,
-		ERR_BMP_NOIMAGE_PTR = -42
+		ERR_BMP_NOIMAGE_PTR = -42,
+		ERR_READ_FEATURE = -51
 	};
 
 	/*
@@ -68,6 +69,12 @@ namespace svs
 		libType: camera interface type
 		*/
 		SVSCapture(LibraryType libType);
+
+		int GetFeatureBool(const char* cam_sn, const char * name);
+		double GetFeatureFloat(const char* cam_sn, const char * name);
+		int GetFeatureInt(const char* cam_sn, const char * name);
+		const char * GetFeatureStr(const char* cam_sn, const char * name);
+
 		/*
 		Find camera by SN, add it to device info list.
 		Args:
@@ -136,6 +143,7 @@ namespace svs
 		*/
 		int InitLibrary(LibraryType libType);
 		int GetCameraIndex(const char* cam_sn);
+		std::string GetCameraFeatureValue(const char* cam_sn, const char * name);
 	};
 }
 /*
@@ -159,6 +167,10 @@ extern "C" {
 	/*
 	Register camera for future interaction.
 	*/
+	int SVSCAPTURE_API SVSCapture_get_feature_bool(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
+	double SVSCAPTURE_API SVSCapture_get_feature_float(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
+	int SVSCAPTURE_API SVSCapture_get_feature_int(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
+	//const char * SVSCAPTURE_API SVSCapture_get_feature_str(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
 	int  SVSCAPTURE_API SVSCapture_reg_camera(svs::SVSCapture* sv_cap, const char* sn);
 	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, int value);
 	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, double value);
