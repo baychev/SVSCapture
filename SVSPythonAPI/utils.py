@@ -40,5 +40,6 @@ def save_image(image, file_path="C:\\images"):
     mat = np.asarray(image.data, dtype=np.uint8).reshape(image.height, image.width, image.channels)
     cv2.imwrite('{0}\\cv2_{1}.png'.format(file_path, image.timestamp), mat)
 
-def str_to_bytearray(str):
+# string to byte array
+def stoba(str):
     return str.encode('ascii')

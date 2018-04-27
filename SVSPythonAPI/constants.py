@@ -13,6 +13,8 @@ class CameraSettingDataType(object):
     INT = 1
     FLOAT = 2
     ENUM = 3
+    BOOL = 4
+    STR = 5
 
 class CameraSettings(object):
     ACQUISITION_TIMEOUT = "AcquisitionTimeout"

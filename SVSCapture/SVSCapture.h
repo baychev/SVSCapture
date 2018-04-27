@@ -73,7 +73,7 @@ namespace svs
 		int GetFeatureBool(const char* cam_sn, const char * name);
 		double GetFeatureFloat(const char* cam_sn, const char * name);
 		int GetFeatureInt(const char* cam_sn, const char * name);
-		const char * GetFeatureStr(const char* cam_sn, const char * name);
+		void GetFeatureStr(const char* cam_sn, const char * name, char * value);
 
 		/*
 		Find camera by SN, add it to device info list.
@@ -170,7 +170,7 @@ extern "C" {
 	int SVSCAPTURE_API SVSCapture_get_feature_bool(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
 	double SVSCAPTURE_API SVSCapture_get_feature_float(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
 	int SVSCAPTURE_API SVSCapture_get_feature_int(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
-	//const char * SVSCAPTURE_API SVSCapture_get_feature_str(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name);
+	void SVSCAPTURE_API SVSCapture_get_feature_str(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, char * value);
 	int  SVSCAPTURE_API SVSCapture_reg_camera(svs::SVSCapture* sv_cap, const char* sn);
 	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, int value);
 	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, double value);

@@ -10,12 +10,14 @@ print("This demo shows how to interface with a SVS Vistek USB3 camera.\n")
 
 with SVSCapture() as sv_cap:
     cam = Camera(_serial_number)
-    # NOTE: The settings outght to be read from the camera.
-    #       Need to set acq timeout through code. It depends on the camera's frame rate.
-    cam.configure(im_width=600, im_height=600, im_channels=3, exposure_time=20000)
+    # NOTE: Need to set acq timeout through code. It depends on the camera's frame rate.
     status = sv_cap.register_camera(cam)
-    print("status",status)
     assert status
+    # Read a setting
+    width = sv_cap.get_setting(cam, CameraSettings.WIDTH)
+    assert width > 0
+    # Write a setting
+    #sv_cap.set_setting(cam, CameraSettings.TRIGGER_MODE, TriggerMode.SOFTWARE_TRIGGER)
     # This is a time expensive operation.
     sv_cap.start_acq(cam)
     # Ramp up camera
