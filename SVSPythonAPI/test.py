@@ -13,8 +13,9 @@ with SVSCapture() as sv_cap:
     # NOTE: The settings outght to be read from the camera.
     #       Need to set acq timeout through code. It depends on the camera's frame rate.
     cam.configure(im_width=600, im_height=600, im_channels=3, exposure_time=20000)
-    sv_cap.register_camera(cam)
-    assert cam.index >= 0
+    status = sv_cap.register_camera(cam)
+    print("status",status)
+    assert status
     # This is a time expensive operation.
     sv_cap.start_acq(cam)
     # Ramp up camera
@@ -22,7 +23,7 @@ with SVSCapture() as sv_cap:
     # Take images and save
     for i in range(0, 1):
         image = sv_cap.get_image(cam)
-        #image.save() # save using OpenCV
+        image.save() # save using OpenCV
 
     # Test frame availability with a high number of frame grabs.
     print("performing availability test...")

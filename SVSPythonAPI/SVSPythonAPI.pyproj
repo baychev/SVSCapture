@@ -5,7 +5,8 @@
     <ProjectGuid>0b510862-a7ba-407c-8f9d-c03d6788a0ef</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>_svsapi.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -34,7 +35,6 @@
     <Compile Include="utils.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_svsapi.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

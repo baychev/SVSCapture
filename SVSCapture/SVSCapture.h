@@ -75,9 +75,9 @@ namespace svs
 		*/
 		int RegisterCamera(const char * sn);
 
-		void SetAcquisitionTimeout(int cam_idx, int value);
+		void SetAcquisitionTimeout(const char* cam_sn, int value);
 
-		void SetFeatureEnum(int cam_idx, const char * name, int value);
+		void SetFeatureEnum(const char* cam_sn, const char * name, int value);
 		/*
 		Set camera int feature value.
 		Note: must be devisible by 8.
@@ -86,7 +86,7 @@ namespace svs
 		name: feature name
 		value: feature value
 		*/
-		void SetFeatureInt(int cam_idx, const char * name, int value);
+		void SetFeatureInt(const char* cam_sn, const char * name, int value);
 		/*
 		Set camera float feature value.
 		Args:
@@ -94,13 +94,13 @@ namespace svs
 		name: feature name
 		value: feature value
 		*/
-		void SetFeatureFloat(int cam_idx, const char * name, double value);
+		void SetFeatureFloat(const char* cam_sn, const char * name, double value);
 		/*
 		Open acquisition stream.
 		Args:
 		cam_idx: camera index (in sv_cam_list)
 		*/
-		void StartAcquisition(int cam_idx);
+		void StartAcquisition(const char* cam_sn);
 		/*
 		Get image from stream as an RGB byte array.
 		Args:
@@ -108,13 +108,13 @@ namespace svs
 		im_buffer: image bufffer to store the result
 		NOTE: this should create an OpenCV Mat3b
 		*/
-		int GetImage(int cam_idx, unsigned char * im_buffer);
+		int GetImage(const char* cam_sn, unsigned char * im_buffer);
 		/*
 		Close acquisition stream.
 		Args:
 		cam_idx: camera index (in sv_cam_list)
 		*/
-		void StopAcquisition(int cam_idx);
+		void StopAcquisition(const char* cam_sn);
 		/*
 		Close the library.
 		*/
@@ -124,17 +124,18 @@ namespace svs
 		Args:
 		cam_idx: camera index (in sv_cam_list)
 		*/
-		void PrintFeatureInfo(int cam_idx);
+		void PrintFeatureInfo(const char* cam_sn);
 
 	private:
 		SVCamSystem * sv_cam_sys = NULL;
-		UINT32 kTimeOut = 50;
+		UINT32 acqTimeout = 50;
 		const int kChannels = 3;
 		/*
 		Initialize library, find attached devices.
 		Note: need to create and maintain a separate SVCamSystem instance per interface type(GigE, USB, CL).
 		*/
 		int InitLibrary(LibraryType libType);
+		int GetCameraIndex(const char* cam_sn);
 	};
 }
 /*
@@ -154,17 +155,17 @@ extern "C" {
 	/*
 	Get an image from a camera.
 	*/
-	int  SVSCAPTURE_API SVSCapture_get_image(svs::SVSCapture* sv_cap, int cam_idx, unsigned char * im_buffer);
+	int  SVSCAPTURE_API SVSCapture_get_image(svs::SVSCapture* sv_cap, const char* cam_sn, unsigned char * im_buffer);
 	/*
 	Register camera for future interaction.
 	*/
 	int  SVSCAPTURE_API SVSCapture_reg_camera(svs::SVSCapture* sv_cap, const char* sn);
-	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
-	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, int cam_idx, const char* name, double value);
-	void SVSCAPTURE_API SVSCapture_set_feature_int(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
-	void SVSCAPTURE_API SVSCapture_set_acq_timeout(svs::SVSCapture* sv_cap, int cam_idx, int value);
-	void SVSCAPTURE_API SVSCapture_start_acq(svs::SVSCapture* sv_cap, int cam_idx);
-	void SVSCAPTURE_API SVSCapture_stop_acq(svs::SVSCapture* sv_cap, int cam_idx);
+	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, int value);
+	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, double value);
+	void SVSCAPTURE_API SVSCapture_set_feature_int(svs::SVSCapture* sv_cap, const char* cam_sn, const char* name, int value);
+	void SVSCAPTURE_API SVSCapture_set_acq_timeout(svs::SVSCapture* sv_cap, const char* cam_sn, int value);
+	void SVSCAPTURE_API SVSCapture_start_acq(svs::SVSCapture* sv_cap, const char* cam_sn);
+	void SVSCAPTURE_API SVSCapture_stop_acq(svs::SVSCapture* sv_cap, const char* cam_sn);
 #ifdef __cplusplus
 }
 #endif
