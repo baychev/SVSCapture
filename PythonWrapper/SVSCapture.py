@@ -6,7 +6,7 @@ import numpy as np
 import os.path
 import time
 
-path = "x64\\Release\\SVSCapture.dll"
+path = "..\\x64\\Release\\SVSCapture.dll"
 
 if os.path.isfile(path):
     lib = ctypes.cdll.LoadLibrary(path)
@@ -14,19 +14,17 @@ else:
     msg = 'DLL not present at relative file path: ' + path
     raise Exception(msg)
 
-enable_timing = True
+enable_timing = False
 
 def timethis(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        start = time.time()
-        result = func(*args, **kwargs)
-        end = time.time()
-
-        if enable_timing:
-            print('method {0} : {1} seconds.'.format(func.__name__, round(end - start, 3)))
-
-        return result
+            start = time.time()
+            result = func(*args, **kwargs)
+            end = time.time()
+            if enable_timing:
+                print('method {0} : {1} seconds.'.format(func.__name__, round(end - start, 3)))
+            return result
     return wrapper
 
 # NOTE: enum.Enum is inconsistent
@@ -47,7 +45,6 @@ class Image(object):
         self.height = height
         self.channels = 3
         self.camera_serial_number = camera_sn
-        self.status_code = None
 
     @timethis
     def save(self, dir="C:\\images\\"):
@@ -78,9 +75,6 @@ class SVSCapture(object):
     def __init__(self, libType):
         lib.SVSCapture_new.argtypes = [ctypes.c_int]
         lib.SVSCapture_new.restype = ctypes.c_void_p
-
-        lib.SVSCapture_set_feature_enum.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_int]
-        lib.SVSCapture_set_feature_enum.restype = ctypes.c_void_p
 
         lib.SVSCapture_set_feature_int.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_int]
         lib.SVSCapture_set_feature_int.restype = ctypes.c_void_p
@@ -141,12 +135,11 @@ class SVSCapture(object):
         time_start = time.time() * 1000
         while time.time() * 1000 < time_start + timeout_ms:
             res = lib.SVSCapture_get_image(self.obj, cam.index, image.data)
+            retries +=1
             if res == 0:
                 if retries > 0:
                     print('Got an image with {} retries'.format(retries))
                 break
-            
-            retries +=1
         if res != 0:
             print('Could not obtain an image from {} retries.'.format(retries))
   

@@ -74,6 +74,9 @@ namespace svs
 		sn: serial number
 		*/
 		int RegisterCamera(const char * sn);
+
+		void SetAcquisitionTimeout(int cam_idx, int value);
+
 		void SetFeatureEnum(int cam_idx, const char * name, int value);
 		/*
 		Set camera int feature value.
@@ -125,7 +128,7 @@ namespace svs
 
 	private:
 		SVCamSystem * sv_cam_sys = NULL;
-		const UINT32 kTimeOut = 100;
+		UINT32 kTimeOut = 50;
 		const int kChannels = 3;
 		/*
 		Initialize library, find attached devices.
@@ -156,12 +159,10 @@ extern "C" {
 	Register camera for future interaction.
 	*/
 	int  SVSCAPTURE_API SVSCapture_reg_camera(svs::SVSCapture* sv_cap, const char* sn);
-	/*
-	Save image to the file system. Use default compression in OpenCV.
-	*/
+	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
 	void SVSCAPTURE_API SVSCapture_set_feature_float(svs::SVSCapture* sv_cap, int cam_idx, const char* name, double value);
 	void SVSCAPTURE_API SVSCapture_set_feature_int(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
-	void SVSCAPTURE_API SVSCapture_set_feature_enum(svs::SVSCapture* sv_cap, int cam_idx, const char* name, int value);
+	void SVSCAPTURE_API SVSCapture_set_acq_timeout(svs::SVSCapture* sv_cap, int cam_idx, int value);
 	void SVSCAPTURE_API SVSCapture_start_acq(svs::SVSCapture* sv_cap, int cam_idx);
 	void SVSCAPTURE_API SVSCapture_stop_acq(svs::SVSCapture* sv_cap, int cam_idx);
 #ifdef __cplusplus

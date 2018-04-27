@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PythonWrapperDemo", "Python
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonWrapper", "PythonWrapper\PythonWrapper.pyproj", "{E2C8E61A-E4D1-461B-A542-E0F4F139EDCA}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SVSPythonAPI", "SVSCapturePython\SVSPythonAPI.pyproj", "{0B510862-A7BA-407C-8F9D-C03D6788A0EF}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SVSPythonAPI", "SVSPythonAPI\SVSPythonAPI.pyproj", "{0B510862-A7BA-407C-8F9D-C03D6788A0EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
