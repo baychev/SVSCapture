@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <chrono>
 #include <iostream>
-#include "ImageUtils.h"
 #include "SVCamSystem.h"
 
 #ifdef SVSCAPTURE_EXPORTS
