@@ -38,21 +38,6 @@ class Camera(object):
         self.serial_number = serial_number
         # Safeguard for serial_number placeholder. Delete if yours is not numeric.
         assert int(self.serial_number) > 0
-        # TODO: load stored camera settings
-
-    # REMOVE
-    def configure(self, im_width, im_height, im_channels, exposure_time, trigger_mode=TriggerMode.SOFTWARE_TRIGGER):
-        print("WARNING: Camera.configure() does NOT write any settings to the camera. Use SVCapture.set_setting().")
-        self.image_channels = im_channels
-        self.image_height = im_height
-        self.image_width = im_width
-        self.exposure_time = exposure_time
-        self.trigger_mode = trigger_mode
-        # Safeguard for unimplemented feature.
-        assert self.trigger_mode != TriggerMode.CONTINUOUS
-
-    def _check_configuration(self):
-        pass
 
 class SVSCapture(object):
     lib = None
@@ -61,6 +46,7 @@ class SVSCapture(object):
     ci_cl = None    # CameraLink
     ci_gige = None  # GigE
     ci_usb3 = None  # USB3
+    camera_interfaces = {InterfaceName.CAMERA_LINK: ci_cl, InterfaceName.GIG_E: ci_gige, InterfaceName.USB3: ci_usb3}
 
     def __init__(self):
         self.lib = ctypes.cdll.LoadLibrary(dll_path)

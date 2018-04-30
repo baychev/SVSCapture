@@ -3,11 +3,16 @@ dll_path = "..\\x64\\Release\\SVSCapture.dll"
 class InterfaceType(object):
     GIG_E = 0
     USB3 = 1
-    CAMERA_LINK= 2
+    CAMERA_LINK = 2
+
+class InterfaceName(object):
+    GIG_E = "Gig_E"
+    USB3 = "USB3"
+    CAMERA_LINK= "CameraLink"
 
 class TriggerMode(object):
-    CONTINUOUS = 0
-    SOFTWARE_TRIGGER = 1
+    OFF = 0
+    ON = 1
 
 class CameraSettingDataType(object):
     INT = 1

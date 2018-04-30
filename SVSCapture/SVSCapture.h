@@ -25,12 +25,12 @@ namespace svs
 	};
 
 	/*
-	Camera shooting modes
+	Camera trigger mode. ON activates software trigger.
 	*/
-	enum SVSCAPTURE_API ShootingMode
+	enum SVSCAPTURE_API TriggerMode
 	{
-		CONTINUOUS = 0,
-		SOFTWARE_TRIGGER = 1
+		OFF = 0,
+		ON = 1
 	};
 
 	/*
@@ -88,7 +88,7 @@ namespace svs
 		Set camera int feature value.
 		Note: must be devisible by 8.
 		Args:
-		cam_idx: camera index (in sv_cam_list)
+		cam_sn: camera serial number
 		name: feature name
 		value: feature value
 		*/
@@ -96,7 +96,7 @@ namespace svs
 		/*
 		Set camera float feature value.
 		Args:
-		cam_idx: camera index (in sv_cam_list)
+		cam_sn: camera serial number
 		name: feature name
 		value: feature value
 		*/
@@ -104,13 +104,13 @@ namespace svs
 		/*
 		Open acquisition stream.
 		Args:
-		cam_idx: camera index (in sv_cam_list)
+		cam_sn: camera serial number
 		*/
 		void StartAcquisition(const char* cam_sn);
 		/*
 		Get image from stream as an RGB byte array.
 		Args:
-		cam_idx: camera index (in sv_cam_list)
+		cam_sn: camera serial number
 		im_buffer: image bufffer to store the result
 		NOTE: this should create an OpenCV Mat3b
 		*/
@@ -118,7 +118,7 @@ namespace svs
 		/*
 		Close acquisition stream.
 		Args:
-		cam_idx: camera index (in sv_cam_list)
+		cam_sn: camera serial number
 		*/
 		void StopAcquisition(const char* cam_sn);
 		/*
@@ -128,13 +128,13 @@ namespace svs
 		/*
 		Print camera settings.
 		Args:
-		cam_idx: camera index (in sv_cam_list)
+		cam_sn: camera serial number
 		*/
 		void PrintFeatureInfo(const char* cam_sn);
 
 	private:
 		SVCamSystem * sv_cam_sys = NULL;
-		UINT32 acqTimeout = 50;
+		UINT32 acqTimeout = 50; // Modify this value based on camera frame rate.
 		const int kChannels = 3;
 		/*
 		Initialize library, find attached devices.
