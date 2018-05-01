@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SVSCapture</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>SVCaptureAPI</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -154,7 +155,7 @@
     <ClInclude Include="SVCamAcquisition.h" />
     <ClInclude Include="SVCamFeature.h" />
     <ClInclude Include="SVCamSystem.h" />
-    <ClInclude Include="SVSCapture.h" />
+    <ClInclude Include="SVCaptureAPI.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +169,7 @@
     <ClCompile Include="SVCamAcquisition.cpp" />
     <ClCompile Include="SVCamFeature.cpp" />
     <ClCompile Include="SVCamSystem.cpp" />
-    <ClCompile Include="SVSCapture.cpp" />
+    <ClCompile Include="SVCaptureAPI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

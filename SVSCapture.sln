@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SVSCapture", "SVSCapture\SVSCapture.vcxproj", "{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SVCaptureAPI", "SVCaptureAPI\SVCaptureAPI.vcxproj", "{6ABC78DB-9EF9-4F5F-B66F-2EADDCCFB5C6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleClient", "ConsoleClient\ConsoleClient.vcxproj", "{8F5E26F9-8D60-4BFD-AA1E-FF19E0D927A0}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SVSPythonAPI", "SVSPythonAPI\SVSPythonAPI.pyproj", "{0B510862-A7BA-407C-8F9D-C03D6788A0EF}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SVPythonAPI", "SVPythonAPI\SVPythonAPI.pyproj", "{0B510862-A7BA-407C-8F9D-C03D6788A0EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

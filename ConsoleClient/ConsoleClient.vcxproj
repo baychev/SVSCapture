@@ -140,7 +140,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\include;..\..\SVSCapture\SVSCapture;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\include;..\..\SVSCapture\SVCaptureAPI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -172,6 +172,9 @@
     <ClCompile Include="Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SVCaptureAPI\SVCaptureAPI.vcxproj">
+      <Project>{6abc78db-9ef9-4f5f-b66f-2eaddccfb5c6}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\SVSCapture\SVSCapture.vcxproj">
       <Project>{6abc78db-9ef9-4f5f-b66f-2eaddccfb5c6}</Project>
     </ProjectReference>

@@ -10,7 +10,7 @@ class Test_test1(unittest.TestCase):
 
     def test_Client(self):
         print("This demo shows how to interface with a SVS Vistek USB3 camera.\n")
-        with SVSCapture() as sv_cap:
+        with SVCapture() as sv_cap:
             cam = Camera(serial_number)
             status = sv_cap.register_camera(cam)
             assert status
@@ -35,7 +35,7 @@ class Test_test1(unittest.TestCase):
 
     def test_FrameAvailability(self):
         print("Testing program for frame losses...")
-        with SVSCapture() as sv_cap:
+        with SVCapture() as sv_cap:
             cam = Camera(serial_number)
             status = sv_cap.register_camera(cam)
             sv_cap.start_acq(cam)
