@@ -153,7 +153,7 @@ NOTE: deviate from general function naming convention in order to improve readab
 extern "C" {
 #endif
 	/*
-	Initialize the SDK library with a given camera interface type.
+	Initialize the SDK library, create a pointer to a given camera interface type.
 	*/
 	SVSCAPTURE_API svs::SVCaptureAPI* SVCaptureAPI_new(int lib_type);
 	/*
@@ -164,13 +164,13 @@ extern "C" {
 	Get an image from a camera.
 	*/
 	int  SVSCAPTURE_API SVCaptureAPI_get_image(svs::SVCaptureAPI* sv_cap, const char* cam_sn, unsigned char* im_buffer);
-	/*
-	Register camera for future interaction.
-	*/
 	int SVSCAPTURE_API SVCaptureAPI_get_feature_bool(svs::SVCaptureAPI* sv_cap, const char* cam_sn, const char* name);
 	double SVSCAPTURE_API SVCaptureAPI_get_feature_float(svs::SVCaptureAPI* sv_cap, const char* cam_sn, const char* name);
 	int SVSCAPTURE_API SVCaptureAPI_get_feature_int(svs::SVCaptureAPI* sv_cap, const char* cam_sn, const char* name);
 	void SVSCAPTURE_API SVCaptureAPI_get_feature_str(svs::SVCaptureAPI* sv_cap, const char* cam_sn, const char* name, char* value);
+	/*
+	Register camera for future interaction.
+	*/
 	int  SVSCAPTURE_API SVCaptureAPI_reg_camera(svs::SVCaptureAPI* sv_cap, const char* sn);
 	void SVSCAPTURE_API SVCaptureAPI_set_feature_enum(svs::SVCaptureAPI* sv_cap, const char* cam_sn, const char* name, int value);
 	void SVSCAPTURE_API SVCaptureAPI_set_feature_float(svs::SVCaptureAPI* sv_cap, const char* cam_sn, const char* name, double value);

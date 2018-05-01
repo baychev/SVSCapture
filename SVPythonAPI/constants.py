@@ -1,4 +1,5 @@
-dll_path = "..\\x64\\Release\\SVSCapture.dll"
+dll_path = "..\\x64\\Release\\SVCaptureAPI.dll"
+ASCII = "ascii"
 
 class InterfaceType(object):
     GIG_E = 0

@@ -1,5 +1,5 @@
-from constants import *
 from functools import wraps
+from constants import dll_path
 
 import ctypes
 import cv2
@@ -39,7 +39,3 @@ def save_image(image, file_path="C:\\images"):
         
     mat = np.asarray(image.data, dtype=np.uint8).reshape(image.height, image.width, image.channels)
     cv2.imwrite('{0}\\cv2_{1}.png'.format(file_path, image.timestamp), mat)
-
-# string to byte array
-def stoba(str):
-    return str.encode('ascii')
